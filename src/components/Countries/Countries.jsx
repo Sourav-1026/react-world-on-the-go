@@ -4,11 +4,16 @@ import "./Countries.css";
 
 const Countries = ({ countriesPromise }) => {
   const [visitedCountries, setVisitedCountries] = useState([]);
-  const handleVisitedCountries = (country) => {
-    console.log("visited country has clicked", country);
-    const newCountries = [...visitedCountries, country];
-    setVisitedCountries(newCountries);
+  const handleVisitedCountries = (country, isVisited) => {
+    if (isVisited) {
+      const newCountries = [...visitedCountries, country];
+      setVisitedCountries(newCountries);
+    } else {
+      const remaining = visitedCountries.filter((c) => c.ccn3.ccn3 !== country.ccn3.ccn3);
+      setVisitedCountries(remaining);
+    }
   };
+
   const countriesData = use(countriesPromise);
   const countries = countriesData.countries;
   console.log(countries);

@@ -4,9 +4,11 @@ import "./Country.css";
 const Country = ({ country, handleVisitedCountries }) => {
   const [visited, setVisited] = useState(false);
   const { name, flags, population, region, capital, area } = country;
+
   const handleVisited = () => {
-    setVisited(!visited);
-    handleVisitedCountries(country);
+    const newVisited = !visited;
+    setVisited(newVisited);
+    handleVisitedCountries(country, newVisited);
   };
 
   return (
@@ -19,7 +21,6 @@ const Country = ({ country, handleVisitedCountries }) => {
       <p>
         Area: {area.area} {area.area > 300000 ? "Big Country" : "Small Country"}
       </p>
-      {/* <h3>Name: {name.official}</h3> */}
       <button onClick={handleVisited}>{visited ? "Visited" : "Not Visited"}</button>
     </div>
   );
