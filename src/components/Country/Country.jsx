@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./Country.css";
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountries }) => {
   const [visited, setVisited] = useState(false);
   const { name, flags, population, region, capital, area } = country;
   const handleVisited = () => {
     setVisited(!visited);
+    handleVisitedCountries(country);
   };
 
   return (
     <div className={`country ${visited && "visited-country"}`}>
-      <img src={flags.flags.png} alt="" srcset="" />
+      <img src={flags.flags.png} alt="" />
       <h3>Name: {name.common}</h3>
       <p>capital: {capital.capital}</p>
       <p>Region: {region.region}</p>
